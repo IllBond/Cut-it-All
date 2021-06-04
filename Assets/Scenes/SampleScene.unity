@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.40109524, g: 0.34836906, b: 0.2795071, a: 1}
+  m_IndirectSpecularColor: {r: 0.40109122, g: 0.3483686, b: 0.27950647, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -154,12 +154,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c81e718a0910b3540a99aad52d5619f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mouseSens: 600
+  mouseSens: 200
   xRotation: 0
   yRotation: 0
   PlayerBody: {fileID: 308700194}
   sword: {fileID: 1616861712}
-  direction: {x: 0, y: 0}
 --- !u!114 &308700190
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1377,6 +1376,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c30d4fb361515b4886f2827cdfc7340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mouseSens: 100
 --- !u!1001 &1738122446
 PrefabInstance:
   m_ObjectHideFlags: 0

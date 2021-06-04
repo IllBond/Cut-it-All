@@ -10,7 +10,7 @@ public class MoveCword : MonoBehaviour
     public Transform PlayerBody;
     [SerializeField] private RotationSword sword;
 
-    public Vector2 direction;
+    //public Vector2 direction;
 
     private void Start()
     {
@@ -27,13 +27,12 @@ public class MoveCword : MonoBehaviour
             float MouseX = Input.GetAxis("Mouse Y") * mouseSens * Time.deltaTime;
             float MouseY = Input.GetAxis("Mouse X") * mouseSens * Time.deltaTime;
 
-            if (MouseX != 0 && MouseY != 0) {
-                sword.direction = new Vector2(MouseX, MouseY);
-                sword.xx = xRotation;
-                sword.yy = yRotation;
+            if (MouseY != 0 && MouseX != 0) {
+                sword.xx = MouseX;
+                sword.yy = MouseY;
             }
 
-            direction = new Vector2(MouseY,MouseX);
+            //direction = new Vector2(MouseY,MouseX);
 
             xRotation -= MouseX;
             xRotation = Mathf.Clamp(xRotation, -70, 70);
