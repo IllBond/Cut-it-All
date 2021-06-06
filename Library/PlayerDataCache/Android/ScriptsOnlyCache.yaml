@@ -2,10 +2,12 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - Cut
+    - DestroyHealth
+    - Health
     - MoveForward
     - MoveSword
     - RotationSword
-    - __test
+    - TimeController
     Unity.InputSystem.dll:
     - UnityEngine.InputSystem.Editor.InputActionEditorWindow
     - UnityEngine.InputSystem.InputActionAsset
@@ -58,28 +60,34 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 12072}
+      Script: {instanceID: 11420}
     - Class: 114
-      Script: {instanceID: 12160}
+      Script: {instanceID: 11932}
     - Class: 114
-      Script: {instanceID: 12414}
+      Script: {instanceID: 12162}
     - Class: 114
-      Script: {instanceID: 12770}
+      Script: {instanceID: 12416}
     - Class: 114
-      Script: {instanceID: 12938}
+      Script: {instanceID: 12774}
     - Class: 114
-      Script: {instanceID: 13014}
+      Script: {instanceID: 12942}
     - Class: 114
-      Script: {instanceID: 13164}
+      Script: {instanceID: 13018}
+    - Class: 114
+      Script: {instanceID: 13066}
+    - Class: 114
+      Script: {instanceID: 13170}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 135
       Script: {instanceID: 0}
-    - Class: 143
-      Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 212
+      Script: {instanceID: 0}
+    - Class: 213
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -124,6 +132,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: PlayerQuitHandler
+  - hash:
+      serializedVersion: 2
+      Hash: 8f42d36a24b419efffc20ab3bb852703
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Health
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -294,6 +308,12 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
+      Hash: 845609b7dc629bfc83fed1b7a3149797
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: TimeController
+  - hash:
+      serializedVersion: 2
       Hash: f17a7afbb6fc4d6b5c3ba20ed1c93f68
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.UI
@@ -316,12 +336,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 459b50185a167c1d210a783633c72823
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: __test
   - hash:
       serializedVersion: 2
       Hash: fd68d84f33fad85aac38f2739c0ee270
@@ -396,7 +410,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 411d96cbada92c08e151336fc3c33200
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cut
@@ -418,6 +432,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools.TestRunner.Callbacks
     className: RemoteTestResultSender
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DrawHealth
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
@@ -540,7 +560,7 @@ ScriptsOnlyBuild:
     className: Physics2DRaycaster
   - hash:
       serializedVersion: 2
-      Hash: afbb9d6b6be76ea66ceec84e0d637852
+      Hash: de08b407b9733ba732d712e40dd035b7
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MoveSword
@@ -552,10 +572,16 @@ ScriptsOnlyBuild:
     className: TimelineAsset
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: afc5b93a7b192de2dcb3832fe35a5c7e
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: MoveForward
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: DestroyHealth
   - hash:
       serializedVersion: 2
       Hash: 76aef43e801605d1829c8805eeee135c
@@ -570,7 +596,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: e195e385a024595e7b685fda94ba0ece
+      Hash: d9eeaa218f568aafdbd6d7da80d084ef
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RotationSword
@@ -721,4 +747,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: "C:/Users/princ/Desktop/\u0422\u0435\u0441\u04422.apk"
+  playerPath: C:/Users/princ/Desktop/new ver.apk

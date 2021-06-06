@@ -6,17 +6,13 @@ public class MoveForward : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 dir;
-    private float speed = 0;
+    public float speed = 20;
 
-    void Start()
-    {
-        controller = GetComponent<CharacterController>();
-    }
+
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        dir.z = speed;
-        controller.Move(dir * Time.fixedDeltaTime);
+        transform.position = transform.position + new Vector3(0f, 0f, Time.deltaTime * speed);
     }
 }

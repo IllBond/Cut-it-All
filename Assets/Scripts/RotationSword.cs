@@ -61,7 +61,7 @@ public class RotationSword : MonoBehaviour
        
 
         rotation.z = Angle;
-        Debug.Log(Angle);
+       // Debug.Log(Angle);
         transform.localEulerAngles = rotation;
         //transform.localEulerAngles = rotation;
         //transform.localEulerAngles = Vector3.SlerpUnclamped(transform.localEulerAngles, rotation, Time.deltaTime * 10);
@@ -77,11 +77,11 @@ public class RotationSword : MonoBehaviour
                 transform.localEulerAngles = rotation;*/
     }
 
-    void OnGUI()
+/*    void OnGUI()
     {
         //GUI.TextField(new Rect(10, 90, 400, 20), "Куда свайпаем " + currentSwipe, 100);
         GUI.TextField(new Rect(10, 170, 400, 20), "Угол " + Angle, 100);
-    }
+    }*/
 
 
 }

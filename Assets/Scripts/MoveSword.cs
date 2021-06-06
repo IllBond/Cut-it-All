@@ -21,7 +21,7 @@ public class MoveSword : MonoBehaviour
 
     private void Start()
     {
-        Cursor.lockState = CursorLockMode.Confined;
+        //Cursor.lockState = CursorLockMode.Confined;
     }
 
 

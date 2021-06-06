@@ -5,50 +5,118 @@ using EzySlice;
 
 public class Cut : MonoBehaviour
 {
-    /*    [SerializeField] private Material mat;
-        [SerializeField] private GameObject kesobj;*/
+    private Health _health;
+    private TimeController _timeController;
 
-    /*    public List<Material> mat = new List<Material>() {};
-        public List<GameObject> kesobj = new List<GameObject>() {};*/
-
+    [SerializeField] private TimeController _rimeController;
 
 
+    
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut") && other.gameObject.GetComponent<Rigidbody>())
         {
-            Debug.Log(other.name);
+            _health = other.transform.parent.GetComponent<Health>();
 
-            Material mat;
-            GameObject kesobj;
+            if (_health.health > 0)
+            {
+                _health.Damage();
 
-            mat = other.GetComponent<MeshRenderer>().material;
-            kesobj = other.gameObject;
+                if (_health.health <= 0)
+                {
+                    _rimeController.IsEnemyDead();
+                }
 
-            SlicedHull Kesilen = Kes(kesobj, mat);
 
-            if (Kesilen == null) {
-                return;
+                Material mat;
+                GameObject kesobj;
+
+                mat = other.GetComponent<MeshRenderer>().material;
+                kesobj = other.gameObject;
+
+                SlicedHull Kesilen = Kes(kesobj, mat);
+
+                if (Kesilen == null) { return; }
+
+                GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
+                kesilenust.AddComponent<BoxCollider>();
+                kesilenust.AddComponent<Rigidbody>();
+                //kesilenust.AddComponent<Health>();
+                kesilenust.GetComponent<Rigidbody>().drag = 4;
+               
+
+                kesilenust.transform.SetParent(other.transform.parent, false);
+                StartCoroutine(Flash(0.1f, kesilenust));
+
+                GameObject kesilenalt = Kesilen.CreateLowerHull(kesobj, mat);
+                kesilenalt.AddComponent<BoxCollider>();
+                kesilenalt.AddComponent<Rigidbody>();
+                //kesilenalt.AddComponent<Health>();
+                kesilenalt.GetComponent<Rigidbody>().drag = 4;
+               
+
+                kesilenalt.transform.SetParent(other.transform.parent, false);
+                StartCoroutine(Flash(0.1f, kesilenalt));
+
+                kesobj.transform.position = new Vector3(200, 200, 200); //*
+
+                if (_health.health <= 0)
+                {
+                    Transform transformParent = other.transform.parent.GetComponent<Transform>();
+                    for (int i = 0; i < transformParent.childCount; i++)
+                    {
+                        if (transformParent.GetChild(i).gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut")) {
+                            transformParent.GetChild(i).GetComponent<Rigidbody>().drag = 0;
+                            transformParent.GetChild(i).GetComponent<Rigidbody>().mass = 20;
+                            transformParent.GetChild(i).gameObject.layer = LayerMask.NameToLayer(default);
+                        }
+                       
+                        
+                    }
+                }
+
+
             }
-             
-            GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
-            kesilenust.AddComponent<BoxCollider>();
-            kesilenust.AddComponent<Rigidbody>();
-            kesilenust.GetComponent<Rigidbody>().drag = 20;
-            kesilenust.GetComponent<Rigidbody>().AddExplosionForce(25f, Vector3.right, 10f);
-            StartCoroutine(Flash(0.5f, kesilenust));
+            /*else {
+            
 
-            GameObject kesilenalt = Kesilen.CreateLowerHull(kesobj, mat);
-            kesilenalt.AddComponent<BoxCollider>();
-            kesilenalt.AddComponent<Rigidbody>();
-            kesilenust.GetComponent<Rigidbody>().drag = 20;
-            kesilenalt.GetComponent<Rigidbody>().AddExplosionForce(25f, Vector3.left, 10f);
-            StartCoroutine(Flash(0.5f, kesilenalt));
 
-            kesobj.transform.position = new Vector3(200, 200, 200); //*
+                Material mat;
+                GameObject kesobj;
+                mat = other.GetComponent<MeshRenderer>().material;
+                kesobj = other.gameObject;
+                SlicedHull Kesilen = Kes(kesobj, mat);
+                if (Kesilen == null) { return; }
+
+                GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
+                kesilenust.AddComponent<BoxCollider>();
+                kesilenust.AddComponent<Rigidbody>();
+                kesilenust.AddComponent<Health>();
+                kesilenust.GetComponent<Rigidbody>().drag = 2;
+                kesilenust.transform.SetParent(other.transform.parent, false);
+              
+
+                GameObject kesilenalt = Kesilen.CreateLowerHull(kesobj, mat);
+                kesilenalt.AddComponent<BoxCollider>();
+                kesilenalt.AddComponent<Rigidbody>();
+                kesilenalt.AddComponent<Health>();
+                kesilenalt.GetComponent<Rigidbody>().drag = 2;
+                kesilenalt.transform.SetParent(other.transform.parent, false);
+              
+
+                kesobj.transform.position = new Vector3(200, 200, 200); //*
+
+                _rimeController.IsEnemyDead();
+            }*/
+    
+            
+
+           
+            /*}*/
+
+
         }
     }
-
 
     IEnumerator Flash(float time, GameObject obj)
     {

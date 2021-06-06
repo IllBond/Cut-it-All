@@ -78,9 +78,13 @@
     <Compile Include="Assets\Scripts\Arch\NewController.cs" />
     <Compile Include="Assets\Scripts\Arch\SwordController.cs" />
     <Compile Include="Assets\Scripts\Cut.cs" />
+    <Compile Include="Assets\Scripts\DestroyHealth.cs" />
+    <Compile Include="Assets\Scripts\DrawHealth.cs" />
+    <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\MoveForward.cs" />
     <Compile Include="Assets\Scripts\MoveSword.cs" />
     <Compile Include="Assets\Scripts\RotationSword.cs" />
+    <Compile Include="Assets\Scripts\TimeController.cs" />
     <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
