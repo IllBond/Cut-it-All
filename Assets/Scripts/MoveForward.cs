@@ -6,7 +6,7 @@ public class MoveForward : MonoBehaviour
 {
     private CharacterController controller;
     private Vector3 dir;
-    private float speed = 10;
+    private float speed = 0;
 
     void Start()
     {

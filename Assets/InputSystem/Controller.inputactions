@@ -1,0 +1,74 @@
+{
+    "name": "Controller",
+    "maps": [
+        {
+            "name": "_mouse",
+            "id": "3b5fdd51-50db-490b-baec-7664657985e5",
+            "actions": [
+                {
+                    "name": "Delta",
+                    "type": "Value",
+                    "id": "a2d462fe-ed92-405d-9c33-7801f83c9148",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "Touch",
+                    "type": "Button",
+                    "id": "8173d594-48b8-4211-901b-a853b8922e4b",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d57a7e1a-c9af-4d17-b292-29d1c889fbc3",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Delta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bcdb7f38-fca5-4bf3-8bb7-6f3913cd3cee",
+                    "path": "<Touchscreen>/touch0/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Delta",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "660b1255-1915-4e15-8e8b-fd2bfaebe834",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f30703ae-975b-40bf-ab6f-8bbfb9c4b10b",
+                    "path": "<Touchscreen>/touch0/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Touch",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

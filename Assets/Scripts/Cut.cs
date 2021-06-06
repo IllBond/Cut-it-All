@@ -30,16 +30,18 @@ public class Cut : MonoBehaviour
             if (Kesilen == null) {
                 return;
             }
-
+             
             GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
             kesilenust.AddComponent<BoxCollider>();
             kesilenust.AddComponent<Rigidbody>();
+            kesilenust.GetComponent<Rigidbody>().drag = 20;
             kesilenust.GetComponent<Rigidbody>().AddExplosionForce(25f, Vector3.right, 10f);
             StartCoroutine(Flash(0.5f, kesilenust));
 
             GameObject kesilenalt = Kesilen.CreateLowerHull(kesobj, mat);
             kesilenalt.AddComponent<BoxCollider>();
             kesilenalt.AddComponent<Rigidbody>();
+            kesilenust.GetComponent<Rigidbody>().drag = 20;
             kesilenalt.GetComponent<Rigidbody>().AddExplosionForce(25f, Vector3.left, 10f);
             StartCoroutine(Flash(0.5f, kesilenalt));
 

@@ -4,52 +4,85 @@ using UnityEngine;
 
 public class RotationSword : MonoBehaviour
 {
+    public Transform center;
+    public float Angle;
+    public float LastAngle;
+    public Vector3 newPos;
+
+    public bool isTouch;
 
 
-    public float mouseSens = 100f;
+    public Vector3 oldPosition;
+    public Vector3 deltaPosition;
 
-    public float xx { get; set; } //Здесь позиция мышки
-    public float yy { get; set; } //Здесь позиция мышки
     
-    private float _speedRotation = 120f; // Скорось разворота
-
-
+    private void Start()
+    {
+        oldPosition = transform.position;
+    }
 
     private void Update()
     {
+        oldPosition = transform.position;
 
-     
-            //tapCoor = Input.mousePosition;
-            //tapCoor.z = 10;
+        if (isTouch) {  
+            transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(transform.position.x + newPos.x / 20, -7, 7), Mathf.Clamp(transform.position.y + newPos.y / 20, -8, 8), transform.position.z), 100 * Time.deltaTime);
+        }
 
-            //MousePosition = _camera.ScreenToWorldPoint(tapCoor); // Обновленеи позиции мышки
-            TrackTarget();
-
+        deltaPosition = Vector3.Lerp(deltaPosition, oldPosition - transform.position, 25 * Time.deltaTime);
         
+        if (deltaPosition.x !=0 && deltaPosition.y != 0) {
+
+            
+            Angle = Mathf.Round(Mathf.LerpAngle(Angle, Mathf.Atan2(deltaPosition.y, deltaPosition.x) * Mathf.Rad2Deg + 90, 100 *Time.deltaTime));
+           
+        }
+       
+
+        TrackTarget();
     }
 
-    // Функция следит за курсором мышки и поворачивается относительно него
     private void TrackTarget()
     {
-        float angle = 90 +  Mathf.Round((Mathf.Atan2(yy, xx) * Mathf.Rad2Deg) / 20)*20  ; // Угол корабля по отношению к мышке
-        Debug.Log(angle); //90 ...180 ... Куда повернуть
+        Vector3 rotation = transform.localEulerAngles;
 
-        Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-        //float angle = Mathf.Round(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg); // Угол корабля по отношению к мышке
-
-      /*  Quaternion newQuaternion = new Quaternion();
-        newQuaternion.Set(0, 0, angle, 1);*/
-        
-        
-        transform.localEulerAngles = new Vector3(0, 0, angle);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(xx, yy, angle), _speedRotation * Time.deltaTime);
+        var deltaY = transform.position.x - center.position.x;
+        var deltaX = transform.position.y - center.position.y;
 
 
-        //Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward); // Новый угол  поворотка коробля 
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, _speedRotation * Time.deltaTime);
+
+
+        rotation.y = (5 * deltaY);
+        rotation.x = -(5 * deltaX);
+        // transform.localEulerAngles = rotation;
+
+        //rotation.z = Angle;
+        //rotation.z = Angle;
+       
+
+        rotation.z = Angle;
+        Debug.Log(Angle);
+        transform.localEulerAngles = rotation;
+        //transform.localEulerAngles = rotation;
+        //transform.localEulerAngles = Vector3.SlerpUnclamped(transform.localEulerAngles, rotation, Time.deltaTime * 10);
+        // transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, rotation, Time.deltaTime);
+
+        /*rotation.x = 0;
+        rotation.y = 0;
+        transform.localEulerAngles = rotation;*/
+        //transform.localEulerAngles = Vector3.Slerp(transform.localEulerAngles, rotation, 5 * Time.deltaTime);
+
+
+        /*        rotation.z = Angle1;
+                transform.localEulerAngles = rotation;*/
     }
+
+    void OnGUI()
+    {
+        //GUI.TextField(new Rect(10, 90, 400, 20), "Куда свайпаем " + currentSwipe, 100);
+        GUI.TextField(new Rect(10, 170, 400, 20), "Угол " + Angle, 100);
+    }
+
 
 }
 
