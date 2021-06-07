@@ -79,7 +79,6 @@
     <Compile Include="Assets\Scripts\Arch\SwordController.cs" />
     <Compile Include="Assets\Scripts\Cut.cs" />
     <Compile Include="Assets\Scripts\DestroyHealth.cs" />
-    <Compile Include="Assets\Scripts\DrawHealth.cs" />
     <Compile Include="Assets\Scripts\Health.cs" />
     <Compile Include="Assets\Scripts\MoveForward.cs" />
     <Compile Include="Assets\Scripts\MoveSword.cs" />

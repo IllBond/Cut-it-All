@@ -19,33 +19,18 @@ public class MoveSword : MonoBehaviour
     Vector2 currentSwipe;
 
 
-    private void Start()
-    {
-        //Cursor.lockState = CursorLockMode.Confined;
-    }
-
-
     void Update()
     {
         if (isTouch)
         {
             DeltaPosition();
         }
-        else {
-        /*    currentSwipe = Vector2.zero;
-
-            sword.newPos = currentSwipe;*/
-        }
+  
     }
 
     private void DeltaPosition( )   
     {
         sword.newPos = currentSwipe;
-     /*   if (currentSwipe.y != 0 && currentSwipe.x != 0) {
-            Angle = Mathf.Atan2(currentSwipe.y, currentSwipe.x) * Mathf.Rad2Deg + 90;
-            sword.Angle = Angle;
-        }*/
-        
     }
 
 
@@ -53,8 +38,6 @@ public class MoveSword : MonoBehaviour
     public void OnFindDelta(InputAction.CallbackContext context)
     {
         Vector2 value = context.ReadValue<Vector2>();
-   
-
         currentSwipe = value;
     }
 

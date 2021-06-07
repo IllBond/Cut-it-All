@@ -24,96 +24,79 @@ public class Cut : MonoBehaviour
 
                 if (_health.health <= 0)
                 {
-                    _rimeController.IsEnemyDead();
-                }
+                    Material mat;
+                    GameObject kesobj;
+                    mat = other.GetComponent<MeshRenderer>().material;
+                    kesobj = other.gameObject;
+                    SlicedHull Kesilen = Kes(kesobj, mat);
+                    if (Kesilen == null) { return; }
 
 
-                Material mat;
-                GameObject kesobj;
+                    GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
+                    kesilenust.AddComponent<BoxCollider>();
+                    kesilenust.AddComponent<Rigidbody>();
+                    kesilenust.GetComponent<Rigidbody>().drag = 4;
+                    kesilenust.transform.SetParent(other.transform.parent, false);
+                    
 
-                mat = other.GetComponent<MeshRenderer>().material;
-                kesobj = other.gameObject;
+                    GameObject kesilenalt = Kesilen.CreateLowerHull(kesobj, mat);
+                    kesilenalt.AddComponent<BoxCollider>();
+                    kesilenalt.AddComponent<Rigidbody>();
+                    kesilenalt.GetComponent<Rigidbody>().drag = 4;
+                    kesilenalt.transform.SetParent(other.transform.parent, false);
+                   
 
-                SlicedHull Kesilen = Kes(kesobj, mat);
+                    kesobj.transform.position = new Vector3(2000, 2000, 2000); //*
 
-                if (Kesilen == null) { return; }
 
-                GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
-                kesilenust.AddComponent<BoxCollider>();
-                kesilenust.AddComponent<Rigidbody>();
-                //kesilenust.AddComponent<Health>();
-                kesilenust.GetComponent<Rigidbody>().drag = 4;
-               
-
-                kesilenust.transform.SetParent(other.transform.parent, false);
-                StartCoroutine(Flash(0.1f, kesilenust));
-
-                GameObject kesilenalt = Kesilen.CreateLowerHull(kesobj, mat);
-                kesilenalt.AddComponent<BoxCollider>();
-                kesilenalt.AddComponent<Rigidbody>();
-                //kesilenalt.AddComponent<Health>();
-                kesilenalt.GetComponent<Rigidbody>().drag = 4;
-               
-
-                kesilenalt.transform.SetParent(other.transform.parent, false);
-                StartCoroutine(Flash(0.1f, kesilenalt));
-
-                kesobj.transform.position = new Vector3(200, 200, 200); //*
-
-                if (_health.health <= 0)
-                {
+                    
                     Transform transformParent = other.transform.parent.GetComponent<Transform>();
                     for (int i = 0; i < transformParent.childCount; i++)
                     {
-                        if (transformParent.GetChild(i).gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut")) {
+                        if (transformParent.GetChild(i).gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut"))
+                        {
                             transformParent.GetChild(i).GetComponent<Rigidbody>().drag = 0;
                             transformParent.GetChild(i).GetComponent<Rigidbody>().mass = 20;
                             transformParent.GetChild(i).gameObject.layer = LayerMask.NameToLayer(default);
                         }
-                       
                         
                     }
+                    _rimeController.IsEnemyDead();
                 }
+                else {
+                    Material mat;
+                    GameObject kesobj;
+
+                    mat = other.GetComponent<MeshRenderer>().material;
+                    kesobj = other.gameObject;
+
+                    SlicedHull Kesilen = Kes(kesobj, mat);
+
+                    if (Kesilen == null) { return; }
+
+                    GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
+                    kesilenust.AddComponent<BoxCollider>();
+                    kesilenust.AddComponent<Rigidbody>();
+                    //kesilenust.AddComponent<Health>();
+                    kesilenust.GetComponent<Rigidbody>().drag = 4;
 
 
+                    kesilenust.transform.SetParent(other.transform.parent, false);
+                    StartCoroutine(Flash(0.15f, kesilenust));
+
+                    GameObject kesilenalt = Kesilen.CreateLowerHull(kesobj, mat);
+                    kesilenalt.AddComponent<BoxCollider>();
+                    kesilenalt.AddComponent<Rigidbody>();
+                    //kesilenalt.AddComponent<Health>();
+                    kesilenalt.GetComponent<Rigidbody>().drag = 4;
+
+
+                    kesilenalt.transform.SetParent(other.transform.parent, false);
+                    StartCoroutine(Flash(0.15f, kesilenalt));
+
+                    kesobj.transform.position = new Vector3(200, 200, 200); //*
+                }
             }
-            /*else {
-            
-
-
-                Material mat;
-                GameObject kesobj;
-                mat = other.GetComponent<MeshRenderer>().material;
-                kesobj = other.gameObject;
-                SlicedHull Kesilen = Kes(kesobj, mat);
-                if (Kesilen == null) { return; }
-
-                GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
-                kesilenust.AddComponent<BoxCollider>();
-                kesilenust.AddComponent<Rigidbody>();
-                kesilenust.AddComponent<Health>();
-                kesilenust.GetComponent<Rigidbody>().drag = 2;
-                kesilenust.transform.SetParent(other.transform.parent, false);
-              
-
-                GameObject kesilenalt = Kesilen.CreateLowerHull(kesobj, mat);
-                kesilenalt.AddComponent<BoxCollider>();
-                kesilenalt.AddComponent<Rigidbody>();
-                kesilenalt.AddComponent<Health>();
-                kesilenalt.GetComponent<Rigidbody>().drag = 2;
-                kesilenalt.transform.SetParent(other.transform.parent, false);
-              
-
-                kesobj.transform.position = new Vector3(200, 200, 200); //*
-
-                _rimeController.IsEnemyDead();
-            }*/
-    
-            
-
-           
-            /*}*/
-
 
         }
     }

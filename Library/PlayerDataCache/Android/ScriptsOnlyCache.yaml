@@ -55,18 +55,20 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
+    - Class: 96
+      Script: {instanceID: 0}
     - Class: 104
       Script: {instanceID: 0}
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11420}
+      Script: {instanceID: 11422}
     - Class: 114
-      Script: {instanceID: 11932}
+      Script: {instanceID: 11934}
     - Class: 114
-      Script: {instanceID: 12162}
+      Script: {instanceID: 12164}
     - Class: 114
-      Script: {instanceID: 12416}
+      Script: {instanceID: 12418}
     - Class: 114
       Script: {instanceID: 12774}
     - Class: 114
@@ -78,8 +80,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13170}
     - Class: 115
-      Script: {instanceID: 0}
-    - Class: 135
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -134,7 +134,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 8f42d36a24b419efffc20ab3bb852703
+      Hash: 099c802a39f50cd56a6461b038a40eca
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Health
@@ -435,12 +435,6 @@ ScriptsOnlyBuild:
   - hash:
       serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: DrawHealth
-  - hash:
-      serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.InputSystem.dll
     namespaceName: UnityEngine.InputSystem.UI
     className: BaseInputOverride
@@ -596,7 +590,7 @@ ScriptsOnlyBuild:
     className: TextMeshProUGUI
   - hash:
       serializedVersion: 2
-      Hash: d9eeaa218f568aafdbd6d7da80d084ef
+      Hash: 9849de05330c5cf90ebc2aa3dd2d6cc0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: RotationSword

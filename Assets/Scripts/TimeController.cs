@@ -13,12 +13,22 @@ public class TimeController : MonoBehaviour
 
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut"))
         {
             
             OnTouch();
+ 
+        }
+    }      
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut"))
+        {
+
+            IsEnemyDead();
  
         }
     }    
