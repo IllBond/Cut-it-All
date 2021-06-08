@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class Cut : MonoBehaviour
 {
     private Health _health;
-    private TimeController _timeController;
 
     [SerializeField] private TimeController _rimeController;
 
@@ -15,24 +14,29 @@ public class Cut : MonoBehaviour
     public Text coinsText;
     public GameObject _coin;
 
+    private Transform _objectsParent;
+   
+
+
     void Start()
     {
         //coinsText = GameObject.FindGameObjectsWithTag("CoinText")[0].GetComponent<Text>();
         coinsText.text = "0";
-
+        _objectsParent = GameObject.FindGameObjectsWithTag("ObjectToBeCut")[0].GetComponent<Transform>();
     }
 
-        public void AddScore()
-        {
-       
-                coins++;
-                coinsText.text = ""+coins;
-        }
+    public void AddScore()
+    {
+
+        coins++;
+        coinsText.text = "" + coins;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
 
-        if (other.gameObject.layer == LayerMask.NameToLayer("Coin")) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Coin"))
+        {
             other.gameObject.layer = LayerMask.NameToLayer("Default");
             AddScore();
         }
@@ -43,16 +47,15 @@ public class Cut : MonoBehaviour
             _health.Damage();
 
             int rnd = Random.Range(0, 10);
-           
-            if (rnd  == 5 && other.tag != "Coin")
+
+            if (rnd == 5 && other.tag != "Coin")
             {
+                GameObject coin = Instantiate(_coin, other.transform.position + new Vector3(0, 0, 5), Quaternion.identity, _objectsParent);
 
-                Debug.Log("МОНЕТКА");
-                GameObject coin = Instantiate(_coin , transform.position + new Vector3(0, 0, 30), Quaternion.identity);
-                coin.transform.parent = other.gameObject.transform.parent;
+                //coin.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
 
+  
                 StartCoroutine(SetCollider(0.5f, coin));
-                
             }
 
             Material mat;
@@ -70,7 +73,7 @@ public class Cut : MonoBehaviour
             kesilenust.GetComponent<Rigidbody>().drag = 4;
             kesilenust.AddComponent<MeshCollider>();
             kesilenust.GetComponent<MeshCollider>().convex = true;
-           // kesilenust.GetComponent<Rigidbody>().AddExplosionForce(5f, new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)), 200f);
+            // kesilenust.GetComponent<Rigidbody>().AddExplosionForce(5f, new Vector2(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)), 200f);
             //kesilenust.GetComponent<Rigidbody>().isKinematic = true; //затычка что бы появилась физика
             kesilenust.GetComponent<Rigidbody>().isKinematic = false; //затычка что бы появилась физика
             kesilenust.transform.SetParent(other.transform.parent, false);
@@ -81,8 +84,8 @@ public class Cut : MonoBehaviour
             kesilenalt.GetComponent<Rigidbody>().drag = 4;
             kesilenalt.AddComponent<MeshCollider>();
             kesilenalt.GetComponent<MeshCollider>().convex = true;
-           // kesilenalt.GetComponent<Rigidbody>().AddExplosionForce(5f, Vector3.down, 200f);
-           // kesilenalt.GetComponent<Rigidbody>().isKinematic = true; //затычка что бы появилась физика
+            // kesilenalt.GetComponent<Rigidbody>().AddExplosionForce(5f, Vector3.down, 200f);
+            // kesilenalt.GetComponent<Rigidbody>().isKinematic = true; //затычка что бы появилась физика
             kesilenalt.GetComponent<Rigidbody>().isKinematic = false; //затычка что бы появилась физика
             kesilenalt.transform.SetParent(other.transform.parent, false);
 
@@ -91,15 +94,22 @@ public class Cut : MonoBehaviour
             {
                 StartCoroutine(Flash(0.15f, kesilenust));
                 StartCoroutine(Flash(0.15f, kesilenalt));
-            } else  {
+            }
+            else
+            {
                 _rimeController.IsEnemyDead();
                 Transform transformParent = other.transform.parent.GetComponent<Transform>();
                 for (int i = 0; i < transformParent.childCount; i++)
                 {
-                   
-                        transformParent.GetChild(i).GetComponent<Rigidbody>().drag = 0.01f;
-                        transformParent.GetChild(i).GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-20, 20), Random.Range(5, 20), 55);
-                        transformParent.GetChild(i).gameObject.layer = LayerMask.NameToLayer("NOT_ObjectToBeCut"); //*****
+
+                    if (transformParent.GetChild(i).gameObject.tag != "Coin")
+                    {
+
+                        transformParent.GetChild(i).GetComponent<Rigidbody>().isKinematic = false; //затычка что бы появилась физика
+                    }
+                    transformParent.GetChild(i).GetComponent<Rigidbody>().drag = 0.01f;
+                    transformParent.GetChild(i).GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-40, 40), Random.Range(10, 40), 100);
+                    transformParent.GetChild(i).gameObject.layer = LayerMask.NameToLayer("NOT_ObjectToBeCut"); //*****
                 }
             }
 
@@ -111,8 +121,8 @@ public class Cut : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
         obj.layer = LayerMask.NameToLayer("ObjectToBeCut");
-    }    
-    
+    }
+
     IEnumerator SetCollider(float time, GameObject obj)
     {
         yield return new WaitForSeconds(time);

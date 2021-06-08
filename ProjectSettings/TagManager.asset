@@ -6,6 +6,8 @@ TagManager:
   tags:
   - CoinText
   - Coin
+  - ObjectToBeCut
+  - PointTarget
   layers:
   - Default
   - TransparentFX

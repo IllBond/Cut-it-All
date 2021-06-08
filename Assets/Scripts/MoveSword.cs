@@ -60,6 +60,4 @@ public class MoveSword : MonoBehaviour
             sword.isTouch = false;
         }
     }
-
-
 }

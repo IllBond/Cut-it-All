@@ -11,17 +11,12 @@ public class TimeController : MonoBehaviour
     private float _normalSpeed = 20;
     private float _slowSpeed = 0;
    
-
-
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut"))
         {
-            
             OnTouch();
             other.GetComponent<Rigidbody>().drag = 15f;
-
-
         }
     }      
     
@@ -29,29 +24,15 @@ public class TimeController : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut"))
         {
-
             IsEnemyDead();
- 
         }
     }    
     
-
-
     private void OnTouch() {
-
         _speed.speed = _slowSpeed;
-
-       // Time.timeScale = 0.5f;
-
     }    
     
     public void IsEnemyDead() {
-
-
         _speed.speed = _normalSpeed;
-        //Time.timeScale = 1.0f;
-
     }
-
-
 }

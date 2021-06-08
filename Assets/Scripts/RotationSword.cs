@@ -11,9 +11,7 @@ public class RotationSword : MonoBehaviour
 
     public TrailRenderer trail;
 
-
     public bool isTouch;
-
 
     public Vector3 oldPosition;
     public Vector3 deltaPosition;
