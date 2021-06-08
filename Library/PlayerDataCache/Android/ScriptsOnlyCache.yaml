@@ -1,15 +1,17 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AddScore
     - Cut
     - DestroyHealth
     - Health
     - MoveForward
     - MoveSword
     - RotationSword
+    - ThrowObject
+    - ThrowPint
     - TimeController
     Unity.InputSystem.dll:
-    - UnityEngine.InputSystem.Editor.InputActionEditorWindow
     - UnityEngine.InputSystem.InputActionAsset
     - UnityEngine.InputSystem.InputSettings
     - UnityEngine.InputSystem.InputSystemObject
@@ -20,13 +22,22 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.UI.dll:
+    - UnityEngine.EventSystems.EventSystem
+    - UnityEngine.EventSystems.StandaloneInputModule
+    - UnityEngine.UI.CanvasScaler
+    - UnityEngine.UI.GraphicRaycaster
+    - UnityEngine.UI.Image
+    - UnityEngine.UI.Text
   sceneClasses:
     Assets/Scenes/SampleScene.unity:
     - Class: 1
@@ -49,11 +60,19 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 54
       Script: {instanceID: 0}
+    - Class: 64
+      Script: {instanceID: 0}
     - Class: 65
+      Script: {instanceID: 0}
+    - Class: 74
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
     - Class: 89
+      Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
+    - Class: 95
       Script: {instanceID: 0}
     - Class: 96
       Script: {instanceID: 0}
@@ -62,9 +81,17 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
+      Script: {instanceID: 11254}
+    - Class: 114
       Script: {instanceID: 11422}
     - Class: 114
+      Script: {instanceID: 11472}
+    - Class: 114
+      Script: {instanceID: 11522}
+    - Class: 114
       Script: {instanceID: 11934}
+    - Class: 114
+      Script: {instanceID: 12050}
     - Class: 114
       Script: {instanceID: 12164}
     - Class: 114
@@ -79,7 +106,23 @@ ScriptsOnlyBuild:
       Script: {instanceID: 13066}
     - Class: 114
       Script: {instanceID: 13170}
+    - Class: 114
+      Script: {instanceID: 13234}
+    - Class: 114
+      Script: {instanceID: 13678}
+    - Class: 114
+      Script: {instanceID: 103516}
+    - Class: 114
+      Script: {instanceID: 133172}
+    - Class: 114
+      Script: {instanceID: 624834}
     - Class: 115
+      Script: {instanceID: 0}
+    - Class: 128
+      Script: {instanceID: 0}
+    - Class: 136
+      Script: {instanceID: 0}
+    - Class: 137
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
@@ -88,6 +131,12 @@ ScriptsOnlyBuild:
     - Class: 212
       Script: {instanceID: 0}
     - Class: 213
+      Script: {instanceID: 0}
+    - Class: 222
+      Script: {instanceID: 0}
+    - Class: 223
+      Script: {instanceID: 0}
+    - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -134,7 +183,7 @@ ScriptsOnlyBuild:
     className: PlayerQuitHandler
   - hash:
       serializedVersion: 2
-      Hash: 099c802a39f50cd56a6461b038a40eca
+      Hash: 8f42d36a24b419efffc20ab3bb852703
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Health
@@ -410,7 +459,7 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
-      Hash: 411d96cbada92c08e151336fc3c33200
+      Hash: bfa22b723b15bac6028c97285bf36aea
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Cut
@@ -738,6 +787,24 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: c610175262f54f6edf33e719947687dd
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ThrowObject
+  - hash:
+      serializedVersion: 2
+      Hash: 9b0e6309bdda67334e265ae19862a4c2
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: ThrowPint
+  - hash:
+      serializedVersion: 2
+      Hash: b2981068616f712ba548a6bedea298ea
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AddScore
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity

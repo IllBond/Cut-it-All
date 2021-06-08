@@ -31,7 +31,7 @@ public class RotationSword : MonoBehaviour
         if (isTouch)
         {
             trail.emitting = true;
-            transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(transform.position.x + newPos.x / 80, -7, 7), Mathf.Clamp(transform.position.y + newPos.y / 80, -8, 8), transform.position.z), 100 * Time.deltaTime);
+            transform.position = Vector3.Lerp(transform.position, new Vector3(Mathf.Clamp(transform.position.x + newPos.x / 80, -4, 4), Mathf.Clamp(transform.position.y + newPos.y / 80, -4, 8), transform.position.z), 100 * Time.deltaTime);
         }
         else {
             trail.emitting = false;

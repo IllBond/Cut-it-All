@@ -8,9 +8,9 @@ public class TimeController : MonoBehaviour
     [SerializeField] private Camera _camera;
 
 
-    private float _normalSpeed = 15;
-    private float _slowSpeed = 2;
-
+    private float _normalSpeed = 20;
+    private float _slowSpeed = 0;
+   
 
 
     private void OnTriggerStay(Collider other)
@@ -19,7 +19,9 @@ public class TimeController : MonoBehaviour
         {
             
             OnTouch();
- 
+            other.GetComponent<Rigidbody>().drag = 15f;
+
+
         }
     }      
     
@@ -36,16 +38,18 @@ public class TimeController : MonoBehaviour
 
 
     private void OnTouch() {
-    
-            Debug.Log("Достронулся");
-            _speed.speed = _slowSpeed;
+
+        _speed.speed = _slowSpeed;
+
+       // Time.timeScale = 0.5f;
 
     }    
     
     public void IsEnemyDead() {
-    
-            Debug.Log("Поехали");
-            _speed.speed = _normalSpeed;
+
+
+        _speed.speed = _normalSpeed;
+        //Time.timeScale = 1.0f;
 
     }
 

@@ -64,17 +64,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\EzySlice\Framework\IntersectionResult.cs" />
-    <Compile Include="Assets\EzySlice\Framework\Intersector.cs" />
-    <Compile Include="Assets\EzySlice\Framework\Line.cs" />
-    <Compile Include="Assets\EzySlice\Framework\Plane.cs" />
-    <Compile Include="Assets\EzySlice\Framework\TextureRegion.cs" />
-    <Compile Include="Assets\EzySlice\Framework\Triangle.cs" />
-    <Compile Include="Assets\EzySlice\Framework\Triangulator.cs" />
-    <Compile Include="Assets\EzySlice\SlicedHull.cs" />
-    <Compile Include="Assets\EzySlice\Slicer.cs" />
-    <Compile Include="Assets\EzySlice\SlicerExtensions.cs" />
     <Compile Include="Assets\InputSystem\Controller.cs" />
+    <Compile Include="Assets\Scripts\AddScore.cs" />
     <Compile Include="Assets\Scripts\Arch\NewController.cs" />
     <Compile Include="Assets\Scripts\Arch\SwordController.cs" />
     <Compile Include="Assets\Scripts\Cut.cs" />
@@ -83,8 +74,20 @@
     <Compile Include="Assets\Scripts\MoveForward.cs" />
     <Compile Include="Assets\Scripts\MoveSword.cs" />
     <Compile Include="Assets\Scripts\RotationSword.cs" />
+    <Compile Include="Assets\Scripts\ThrowObject.cs" />
+    <Compile Include="Assets\Scripts\ThrowPint.cs" />
     <Compile Include="Assets\Scripts\TimeController.cs" />
-    <None Include="Assets\SkySerie Freebie\Hdri setup.txt" />
+    <Compile Include="Assets\Textures\EzySlice\Framework\IntersectionResult.cs" />
+    <Compile Include="Assets\Textures\EzySlice\Framework\Intersector.cs" />
+    <Compile Include="Assets\Textures\EzySlice\Framework\Line.cs" />
+    <Compile Include="Assets\Textures\EzySlice\Framework\Plane.cs" />
+    <Compile Include="Assets\Textures\EzySlice\Framework\TextureRegion.cs" />
+    <Compile Include="Assets\Textures\EzySlice\Framework\Triangle.cs" />
+    <Compile Include="Assets\Textures\EzySlice\Framework\Triangulator.cs" />
+    <Compile Include="Assets\Textures\EzySlice\SlicedHull.cs" />
+    <Compile Include="Assets\Textures\EzySlice\Slicer.cs" />
+    <Compile Include="Assets\Textures\EzySlice\SlicerExtensions.cs" />
+    <None Include="Assets\SkyBox\Hdri setup.txt" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.21f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
