@@ -8,6 +8,8 @@ public class MoveSword : MonoBehaviour
 
     public bool isTouch;
 
+    public bool isStpedSwipe;
+
     public Vector3 xPosition;
     public Vector3 yPosition;
 
@@ -19,18 +21,53 @@ public class MoveSword : MonoBehaviour
     Vector2 currentSwipe;
 
 
+    public AudioSource Audio_A;
+    public AudioClip swipe_audio;
+
+    public void CutAudio()
+    {
+        PlayMusic(swipe_audio);
+    }
+
+    public void PlayMusic(AudioClip music)
+    {
+        Debug.Log("Звук");
+        Audio_A.PlayOneShot(music);
+    }
+
     void Update()
     {
         if (isTouch)
         {
             DeltaPosition();
         }
+        
   
     }
 
     private void DeltaPosition( )   
     {
+
+        Debug.Log(currentSwipe);
+        Debug.Log(isStpedSwipe);
+
+        if (currentSwipe.x == 0 && currentSwipe.y == 0) {
+            isStpedSwipe = false;
+        }
+
+
+        if (!isStpedSwipe) {
+            if (Mathf.Abs(currentSwipe.x) > 20 || Mathf.Abs(currentSwipe.y) > 20)
+            {
+                CutAudio();
+                isStpedSwipe = true;
+            }
+        }
+       
+
         sword.newPos = currentSwipe;
+
+
     }
 
 

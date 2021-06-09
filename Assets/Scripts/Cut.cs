@@ -15,8 +15,19 @@ public class Cut : MonoBehaviour
     public GameObject _coin;
 
     private Transform _objectsParent;
-   
 
+    public AudioSource Audio_A;
+    public AudioClip cut_audio;
+    public void CutAudio()
+    {
+        PlayMusic(cut_audio);
+    }
+
+    public void PlayMusic(AudioClip music)
+    {
+        Debug.Log("Играем");
+        Audio_A.PlayOneShot(music);
+    }
 
     void Start()
     {
@@ -43,6 +54,8 @@ public class Cut : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("ObjectToBeCut") && other.gameObject.GetComponent<Rigidbody>())
         {
+
+          
             _health = other.transform.parent.GetComponent<Health>();
             _health.Damage();
 
@@ -50,7 +63,7 @@ public class Cut : MonoBehaviour
 
             if (rnd == 5 && other.tag != "Coin")
             {
-                GameObject coin = Instantiate(_coin, other.transform.position + new Vector3(0, 0, 5), Quaternion.identity, _objectsParent);
+                GameObject coin = Instantiate(_coin, other.transform.position + new Vector3(0, 0, 20), Quaternion.identity, _objectsParent);
 
                 //coin.transform.localScale = new Vector3(2.5f, 2.5f, 2.5f);
 
@@ -67,6 +80,9 @@ public class Cut : MonoBehaviour
             SlicedHull Kesilen = Kes(kesobj, mat);
 
             if (Kesilen == null) { return; }
+
+
+            CutAudio();
 
             GameObject kesilenust = Kesilen.CreateUpperHull(kesobj, mat);
             kesilenust.AddComponent<Rigidbody>();
